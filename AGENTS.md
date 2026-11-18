@@ -121,6 +121,9 @@ builds report `dev`.
   `serve` does a lightweight check of the GitHub releases once per poll and
   surfaces "a newer version is available" via stderr, the digest footer, and
   `/api/v1/status`.
+- **SMTP settings are testable** — `relwatch config test-smtp [--to ADDR]... [--timeout 30s]`
+  sends one test email using the resolved config (works even with
+  `smtp.enabled: false`, with a stderr note); exits non-zero with the SMTP error.
 - **Config/DB discovery** — config: `/etc/relwatch/settings.conf` → `./settings.conf`
   → `~/.config/relwatch/settings.conf`; DB: `--db` > `RELWATCH_DB` > `db:` > install
   default. `store.Open` uses WAL + `busy_timeout`, so a CLI and the running service
